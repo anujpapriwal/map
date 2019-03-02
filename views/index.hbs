@@ -1,0 +1,163 @@
+<div id="mapid">
+
+  <div id="legend">
+    <div id="accordion">
+      <div class="card" style="margin: 0;">
+        <div class="card-header">
+          <a class="card-link" data-toggle="collapse" href="#collapseOne">
+            Legend
+          </a>
+        </div>
+        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+          <div class="card-body">
+            <div class="container">
+              <span class="lcolor" style="background-color: #330002;">0%-25%</span>
+            </div>
+            <div class="container">
+              <span class="lcolor" style="background-color: #5C0002;">25%-50%</span>
+            </div>
+            <div class="container">
+              <span class="lcolor" style="background-color: #94090D;">50%-75%</span>
+            </div>
+            <div class="container">
+              <span class="lcolor" style="background-color: #D40D12;">75%-100%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+ integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+ crossorigin=""></script>
+ <script src="/public/javascripts/leaflet-vector-markers.js"></script>
+ <script src="/public/javascripts/leaflet-timeline-slider.min.js"></script>
+ <script>
+   var map = L.map("mapid").setView([51.505, -0.09], 2);
+
+    var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 10
+    }).addTo(map);
+
+   var zeroP = {
+        stroke: false,
+        fill: true,
+        fillColor: '#330002',
+        fillOpacity: 1
+    }
+    var oneFourth = {
+         stroke: false,
+         fill: true,
+         fillColor: '#5C0002',
+         fillOpacity: 1
+     }
+     var half = {
+          stroke: false,
+          fill: true,
+          fillColor: '#94090D',
+          fillOpacity: 1
+      }
+
+      var full = {
+           stroke: false,
+           fill: true,
+           fillColor: '#D40D12',
+           fillOpacity: 1
+       }
+
+   /*var asPath = '/public/json/asia.geo.json';
+   var naPath = '/public/json/na.geo.json';
+   var saPath = '/public/json/sa.geo.json';
+   var euPath = '/public/json/eu.geo.json';
+   var afPath = '/public/json/africa.geo.json';
+   var ocPath = '/public/json/oc.geo.json';
+
+   var as,na,sa,eu,af,oc;
+
+    $.getJSON(asPath,function(json){
+      alert(json);
+      return json;
+    })
+
+    $.getJSON(naPath,function(json){
+      na = json;
+    })
+
+    $.getJSON(saPath,function(json){
+      sa = json;
+    })
+
+    $.getJSON(euPath,function(json){
+      eu = json;
+    })
+
+    $.getJSON(afPath,function(json){
+      af = json;
+    })
+
+    $.getJSON(ocPath,function(json){
+      oc = json;
+    })
+
+    alert(oc);*/
+
+    L.geoJson({{as}}, {
+        clickable: false,
+        style: oneFourth
+    }).addTo(map);
+
+    L.geoJson({{na}}, {
+        clickable: false,
+        style: full
+    }).addTo(map);
+
+    L.geoJson({{sa}}, {
+        clickable: false,
+        style: half
+    }).addTo(map);
+
+    L.geoJson({{eu}}, {
+        clickable: false,
+        style: half
+    }).addTo(map);
+
+    L.geoJson({{af}}, {
+        clickable: false,
+        style: zeroP
+    }).addTo(map);
+
+    L.geoJson({{oc}}, {
+        clickable: false,
+        style: half
+    }).addTo(map);
+
+         changeColors = function( {label, value, map, exclamation} ) {
+                     switch (label) {
+                       case (label == '2014'):
+
+                         break;
+                       default:
+
+                     }
+                   };
+
+
+      L.control.timelineSlider({
+                position: 'topright',
+                backgroundOpacity: '1',
+                topBgPadding: '20px',
+                bottomBgPadding: '5px',
+                leftBgPadding: '35px',
+                activeColor: '#FF1D23',
+                changeMap: changeColors,
+                timelineItems: ["2014", "2015", "2016", "2017", "2018"]
+              })
+            .addTo(map);
+
+ </script>

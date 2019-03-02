@@ -1,0 +1,41 @@
+* {
+  font-family: "Overpass", sans-serif;
+}
+
+#mapid {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+}
+
+#legend {
+  height: auto;
+  width: 10%;
+  background-color: white;
+  position: absolute;
+  bottom: 5%;
+  right: 1%;
+  z-index: 1000;
+  border-radius: 5px;
+}
+
+#accordion > div > div.card-header > a {
+  text-decoration: none;
+  color: #ff1d23;
+  font-size: 1.5em;
+}
+
+.lcolor {
+  opacity: 0.8;
+  color: white;
+  display: inline-block;
+  margin: 1em 0;
+  padding-bottom: 5px;
+  height: 20px;
+  width: 100%;
+}
+
+.control_container {
+  opacity: 0.85;
+  border-radius: 5px;
+}
