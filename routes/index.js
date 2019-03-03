@@ -1,66 +1,74 @@
 var express = require("express");
 var router = express.Router();
-var fs = require("fs");
-var path = require("path");
+var mongo = require("mongodb").MongoClient;
+var assert = require("assert");
+
+var url = "mongodb://localhost:27017/map";
 
 /* GET home page. */
 
-var asPath = JSON.parse(
-  fs.readFileSync(__dirname + "/public/jsonasia.geo.json", "utf8")
-);
-var naPath = JSON.parse(
-  fs.readFileSync(__dirname + "/public/json/na.geo.json", "utf8")
-);
-var saPath = JSON.parse(
-  fs.readFileSync(__dirname + "/public/json/sa.geo.json", "utf8")
-);
-var euPath = JSON.parse(
-  fs.readFileSync(__dirname + "/public/json/eu.geo.json", "utf8")
-);
-var afPath = JSON.parse(
-  fs.readFileSync(__dirname + "/public/json/africa.geo.json", "utf8")
-);
-var ocPath = JSON.parse(
-  fs.readFileSync(__dirname + "/public/json/oc.geo.json", "utf8")
-);
-
-/*var as, na, sa, eu, af, oc;
-
-$.getJSON(asPath, function(json) {
-  as = json;
-});
-
-$.getJSON(naPath, function(json) {
-  na = json;
-});
-
-$.getJSON(saPath, function(json) {
-  sa = json;
-});
-
-$.getJSON(euPath, function(json) {
-  eu = json;
-});
-
-$.getJSON(afPath, function(json) {
-  af = json;
-});
-
-$.getJSON(ocPath, function(json) {
-  oc = json;
-});*/
-
 router.get("/", function(req, res, next) {
-  res.render("index", {
-    title: "Express",
-    message: msg,
-    as: asPath,
-    na: naPath,
-    sa: saPath,
-    eu: euPath,
-    af: afPath,
-    oc: ocPath
-  });
+  var dataArray = [];
+  var as, na, sa, af, eu, oc;
+  setTimeout(function() {
+    mongo.connect(
+      url,
+      { useNewUrlParser: true },
+      function(err, client) {
+        var db = client.db("map");
+        assert.equal(null, err);
+        console.log("Connected to database!");
+        var outlines = db.collection("continents").find({});
+        outlines.forEach(
+          function(doc, err) {
+            assert.equal(null, err);
+            dataArray.push(doc);
+          },
+          function() {
+            client.close();
+            as = dataArray[1];
+            af = dataArray[0];
+            eu = dataArray[2];
+            na = dataArray[3];
+            sa = dataArray[4];
+            oc = dataArray[5];
+            console.log("Database disconnected!");
+            res.render("index", { title: "Express", data: dataArray });
+          }
+        );
+      }
+    );
+  }, 1000);
 });
 
 module.exports = router;
+
+/*L.geoJson(as, {
+    clickable: false,
+    style: oneFourth
+}).addTo(map);
+
+L.geoJson(na, {
+    clickable: false,
+    style: full
+}).addTo(map);
+
+L.geoJson(sa, {
+    clickable: false,
+    style: half
+}).addTo(map);
+
+L.geoJson(eu, {
+    clickable: false,
+    style: half
+}).addTo(map);
+
+L.geoJson(af, {
+    clickable: false,
+    style: zeroP
+}).addTo(map);
+
+L.geoJson(oc, {
+    clickable: false,
+    style: half
+}).addTo(map);*/

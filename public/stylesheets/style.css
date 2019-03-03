@@ -1,5 +1,6 @@
 * {
   font-family: "Overpass", sans-serif;
+  color: #ff1d23;
 }
 
 #mapid {
@@ -38,4 +39,31 @@
 .control_container {
   opacity: 0.85;
   border-radius: 5px;
+}
+
+#user-input-main {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+}
+
+#user-input {
+  width: 50%;
+  height: auto;
+  margin: 7.5% 12.5%;
+  position: absolute;
+  background-color: #f2f2f2;
+  padding: 2em;
+  border-radius: 5px;
+}
+
+.myBtn {
+  background-color: #ff1d23 !important;
+  border-color: #ff1d23 !important;
+}
+
+#newmain {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
 }

@@ -1,0 +1,51 @@
+<div id="user-input-main" class="mh-auto">
+  <div class="container text-center">
+    <div id="user-input">
+      <h2>Inputs</h2><br>
+      <form action="/map" method="post">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Name</span>
+            <input type="text" class="form-control" placeholder="Your name" id="name" name="name" required>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Email</span>
+            <input type="email" class="form-control" placeholder="Your Email" id="mail" name="email" required>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Latitute</span>
+            <input type="number" class="form-control" placeholder="Latitute for the marker" id="lat" name="lat" min="-180" max="180" step="any" required>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Longitute</span>
+            <input type="number" class="form-control" placeholder="Longitute for the marker" id="long" name="long" min="-180" max="180" step="any" required>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Zoom level</span>
+            <input type="number" class="form-control" placeholder="Zoom level (1 - 18)" id="zoom" name="zoom" min="1" max="18" required>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Description</span>
+            <input type="text" class="form-control" placeholder="Description for the marker" id="desc" name="desc" required>
+          </div>
+        </div><br>
+        <button type="submit" class="myBtn btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

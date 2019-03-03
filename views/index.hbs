@@ -11,16 +11,19 @@
         <div id="collapseOne" class="collapse show" data-parent="#accordion">
           <div class="card-body">
             <div class="container">
-              <span class="lcolor" style="background-color: #330002;">0%-25%</span>
+              <span class="lcolor" style="background-color: #360000;">30-41 years</span>
             </div>
             <div class="container">
-              <span class="lcolor" style="background-color: #5C0002;">25%-50%</span>
+              <span class="lcolor" style="background-color: #610409;">42-51 years</span>
             </div>
             <div class="container">
-              <span class="lcolor" style="background-color: #94090D;">50%-75%</span>
+              <span class="lcolor" style="background-color: #960001;">52-61 years</span>
             </div>
             <div class="container">
-              <span class="lcolor" style="background-color: #D40D12;">75%-100%</span>
+              <span class="lcolor" style="background-color: #E8230C;">62-71 years</span>
+            </div>
+            <div class="container">
+              <span class="lcolor" style="background-color: #FF0000;">72-81 years</span>
             </div>
           </div>
         </div>
@@ -37,111 +40,300 @@
  <script src="/public/javascripts/leaflet-vector-markers.js"></script>
  <script src="/public/javascripts/leaflet-timeline-slider.min.js"></script>
  <script>
+  var as;
+  $.getJSON('../public/json/asia.geo.json', function(json){
+    as = json;
+  });
+
+  var af;
+  $.getJSON('../public/json/africa.geo.json', function(err, json){
+    af = json;
+  });
+
+  var na;
+  $.getJSON('../public/json/na.geo.json', function(err, json){
+    na = json;
+  });
+
+  var sa;
+  $.getJSON('../public/json/sa.geo.json', function(err, json){
+    sa = json;
+  });
+
+  var eu;
+  $.getJSON('../public/json/eu.geo.json', function(err, json){
+    eu = json;
+  });
+
+  var oc;
+  $.getJSON('../public/json/oc.geo.json', function(err, json){
+    as = json;
+  });
+
+
    var map = L.map("mapid").setView([51.505, -0.09], 2);
 
     var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: 'abcd',
-      maxZoom: 10
+      maxZoom: 11
     }).addTo(map);
 
    var zeroP = {
         stroke: false,
         fill: true,
-        fillColor: '#330002',
-        fillOpacity: 1
+        fillColor: '#360000',
+        fillOpacity: 0.8
     }
     var oneFourth = {
          stroke: false,
          fill: true,
-         fillColor: '#5C0002',
-         fillOpacity: 1
+         fillColor: '#610409',
+         fillOpacity: 0.8
      }
      var half = {
           stroke: false,
           fill: true,
-          fillColor: '#94090D',
-          fillOpacity: 1
+          fillColor: '#960001',
+          fillOpacity: 0.8
       }
 
       var full = {
            stroke: false,
            fill: true,
-           fillColor: '#D40D12',
-           fillOpacity: 1
+           fillColor: '#E8230C',
+           fillOpacity: 0.8
        }
 
-   /*var asPath = '/public/json/asia.geo.json';
-   var naPath = '/public/json/na.geo.json';
-   var saPath = '/public/json/sa.geo.json';
-   var euPath = '/public/json/eu.geo.json';
-   var afPath = '/public/json/africa.geo.json';
-   var ocPath = '/public/json/oc.geo.json';
+       var full1 = {
+            stroke: false,
+            fill: true,
+            fillColor: '#FF0000',
+            fillOpacity: 0.8
+        }
 
-   var as,na,sa,eu,af,oc;
-
-    $.getJSON(asPath,function(json){
-      alert(json);
-      return json;
-    })
-
-    $.getJSON(naPath,function(json){
-      na = json;
-    })
-
-    $.getJSON(saPath,function(json){
-      sa = json;
-    })
-
-    $.getJSON(euPath,function(json){
-      eu = json;
-    })
-
-    $.getJSON(afPath,function(json){
-      af = json;
-    })
-
-    $.getJSON(ocPath,function(json){
-      oc = json;
-    })
-
-    alert(oc);*/
-
-    L.geoJson({{as}}, {
-        clickable: false,
-        style: oneFourth
-    }).addTo(map);
-
-    L.geoJson({{na}}, {
-        clickable: false,
-        style: full
-    }).addTo(map);
-
-    L.geoJson({{sa}}, {
-        clickable: false,
-        style: half
-    }).addTo(map);
-
-    L.geoJson({{eu}}, {
-        clickable: false,
-        style: half
-    }).addTo(map);
-
-    L.geoJson({{af}}, {
-        clickable: false,
-        style: zeroP
-    }).addTo(map);
-
-    L.geoJson({{oc}}, {
-        clickable: false,
-        style: half
-    }).addTo(map);
 
          changeColors = function( {label, value, map, exclamation} ) {
                      switch (label) {
-                       case (label == '2014'):
+                       case '1950-55':
+                           $.getJSON('../public/json/asia.geo.json', function(json){
+                             L.geoJson(json, {
+                                 clickable: false,
+                                 style: oneFourth
+                             }).addTo(map);
+                           });
 
+                           $.getJSON('../public/json/na.geo.json', function(json){
+                             L.geoJson(json, {
+                                 clickable: false,
+                                 style: full
+                             }).addTo(map);
+                           });
+
+                           $.getJSON('../public/json/sa.geo.json', function(json){
+                             L.geoJson(json, {
+                                 clickable: false,
+                                 style: half
+                             }).addTo(map);
+                           });
+
+                           $.getJSON('../public/json/eu.geo.json', function(json){
+                             L.geoJson(json, {
+                                 clickable: false,
+                                 style: full
+                             }).addTo(map);
+                           });
+
+                           $.getJSON('../public/json/africa.geo.json', function(json){
+                             L.geoJson(json, {
+                                 clickable: false,
+                                 style: zeroP
+                             }).addTo(map);
+                           });
+
+                           $.getJSON('../public/json/oc.geo.json', function(json){
+                             L.geoJson(json, {
+                                 clickable: false,
+                                 style: half
+                             }).addTo(map);
+                           });
                          break;
+
+                        case '1970-75':
+                          $.getJSON('../public/json/asia.geo.json', function(json){
+                            L.geoJson(json, {
+                                clickable: false,
+                                style: half
+                            }).addTo(map);
+                          });
+
+                          $.getJSON('../public/json/na.geo.json', function(json){
+                            L.geoJson(json, {
+                                clickable: false,
+                                style: full1
+                            }).addTo(map);
+                          });
+
+                          $.getJSON('../public/json/sa.geo.json', function(json){
+                            L.geoJson(json, {
+                                clickable: false,
+                                style: half
+                            }).addTo(map);
+                          });
+
+                          $.getJSON('../public/json/eu.geo.json', function(json){
+                            L.geoJson(json, {
+                                clickable: false,
+                                style: full
+                            }).addTo(map);
+                          });
+
+                          $.getJSON('../public/json/africa.geo.json', function(json){
+                            L.geoJson(json, {
+                                clickable: false,
+                                style: oneFourth
+                            }).addTo(map);
+                          });
+
+                          $.getJSON('../public/json/oc.geo.json', function(json){
+                            L.geoJson(json, {
+                                clickable: false,
+                                style: full
+                            }).addTo(map);
+                          });
+                          break;
+
+                        case '1990-95':
+                            $.getJSON('../public/json/asia.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/na.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full1
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/sa.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/eu.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full1
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/africa.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: half
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/oc.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full1
+                              }).addTo(map);
+                            });
+                          break;
+
+                          case '2010-15':
+                            $.getJSON('../public/json/asia.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/na.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full1
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/sa.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full1
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/eu.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full1
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/africa.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: half
+                              }).addTo(map);
+                            });
+
+                            $.getJSON('../public/json/oc.geo.json', function(json){
+                              L.geoJson(json, {
+                                  clickable: false,
+                                  style: full1
+                              }).addTo(map);
+                            });
+                            break;
+
+                            case '2030-35':
+                              $.getJSON('../public/json/asia.geo.json', function(json){
+                                L.geoJson(json, {
+                                    clickable: false,
+                                    style: full
+                                }).addTo(map);
+                              });
+
+                              $.getJSON('../public/json/na.geo.json', function(json){
+                                L.geoJson(json, {
+                                    clickable: false,
+                                    style: full1
+                                }).addTo(map);
+                              });
+
+                              $.getJSON('../public/json/sa.geo.json', function(json){
+                                L.geoJson(json, {
+                                    clickable: false,
+                                    style: full1
+                                }).addTo(map);
+                              });
+
+                              $.getJSON('../public/json/eu.geo.json', function(json){
+                                L.geoJson(json, {
+                                    clickable: false,
+                                    style: full1
+                                }).addTo(map);
+                              });
+
+                              $.getJSON('../public/json/africa.geo.json', function(json){
+                                L.geoJson(json, {
+                                    clickable: false,
+                                    style: half
+                                }).addTo(map);
+                              });
+
+                              $.getJSON('../public/json/oc.geo.json', function(json){
+                                L.geoJson(json, {
+                                    clickable: false,
+                                    style: full1
+                                }).addTo(map);
+                              });
+                              break;
                        default:
 
                      }
@@ -156,8 +348,10 @@
                 leftBgPadding: '35px',
                 activeColor: '#FF1D23',
                 changeMap: changeColors,
-                timelineItems: ["2014", "2015", "2016", "2017", "2018"]
+                timelineItems: ["1950-55", "1970-75", "1990-95", "2010-15", "2030-35"]
               })
             .addTo(map);
+
+
 
  </script>

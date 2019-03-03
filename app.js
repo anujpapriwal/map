@@ -7,6 +7,8 @@ var hbs = require("express-handlebars");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var newMap = require("./routes/newMap");
+var map = require("./routes/map");
 
 var app = express();
 
@@ -31,6 +33,8 @@ app.use("/public", express.static("public"));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/newMap", newMap);
+app.use("/map", map);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
