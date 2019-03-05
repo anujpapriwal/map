@@ -4,19 +4,10 @@ var mongoose = require("mongoose");
 var schema = mongoose.Schema;
 var mapSchema = require("../model/nMap");
 var cities = require("../model/cities");
-mongoose.connect(
-  "mongodb://127.0.0.1:27017/map",
-  { useNewUrlParser: true, useFindAndModify: false }
-);
 
 /* GET home page. */
 
 router.post("/", function(req, res, next) {
-  var db = mongoose.connection;
-  db.on("error", console.error.bind(console, "connection error:"));
-  db.once("open", function() {
-    // we're connected!
-  });
   var userInputs = {
     name: req.body.name,
     email: req.body.email,

@@ -11,11 +11,6 @@ mongoose.connect(
 /* GET home page. */
 
 router.get("/", function(req, res, next) {
-  var db = mongoose.connection;
-  db.on("error", console.error.bind(console, "connection error:"));
-  db.once("open", function() {
-    // we're connected!
-  });
   var myData;
   cities.find({}, function(err, data) {
     if (err) return console.log(err);
@@ -34,33 +29,3 @@ router.get("/", function(req, res, next) {
 });
 
 module.exports = router;
-
-/*L.geoJson(as, {
-    clickable: false,
-    style: oneFourth
-}).addTo(map);
-
-L.geoJson(na, {
-    clickable: false,
-    style: full
-}).addTo(map);
-
-L.geoJson(sa, {
-    clickable: false,
-    style: half
-}).addTo(map);
-
-L.geoJson(eu, {
-    clickable: false,
-    style: half
-}).addTo(map);
-
-L.geoJson(af, {
-    clickable: false,
-    style: zeroP
-}).addTo(map);
-
-L.geoJson(oc, {
-    clickable: false,
-    style: half
-}).addTo(map);*/
