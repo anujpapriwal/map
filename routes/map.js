@@ -42,11 +42,6 @@ router.get("/", function(req, res, next) {
 module.exports = router;
 
 router.get("/:continent", function(req, res, next) {
-  var db = mongoose.connection;
-  db.on("error", console.error.bind(console, "connection error:"));
-  db.once("open", function() {
-    // we're connected!
-  });
   var input = req.params.continent;
   cities.findOne({ continent: input }, function(err, city) {
     if (err) return console.log(err);
