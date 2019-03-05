@@ -20,6 +20,17 @@
   border-radius: 5px;
 }
 
+#tryBtn {
+  height: auto;
+  width: 10%;
+  background-color: white;
+  position: absolute;
+  bottom: 5%;
+  left: 1%;
+  z-index: 1000;
+  border-radius: 5px;
+}
+
 #accordion > div > div.card-header > a {
   text-decoration: none;
   color: #ff1d23;
@@ -66,4 +77,61 @@
   background-color: black;
   height: 100vh;
   width: 100%;
+}
+
+.homebtn {
+  z-index: 1000;
+  position: absolute;
+  top: 2.5%;
+  right: 1%;
+}
+
+.leaflet-bar a {
+  color: red !important;
+}
+
+.input-group > .input-group-prepend {
+  flex: 0 0 20%;
+}
+.input-group .input-group-text {
+  width: 20%;
+}
+
+.pre-main {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  padding-top: 20%;
+  z-index: 10000;
+  position: absolute;
+}
+.preloader h1 {
+  background-color: black;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(40, end), blinker 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blinker {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
 }

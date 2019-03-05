@@ -1,44 +1,36 @@
 var express = require("express");
 var router = express.Router();
-var mongo = require("mongodb").MongoClient;
+var mongoose = require("mongoose");
 var assert = require("assert");
-
-var url = "mongodb://localhost:27017/map";
+var cities = require("../model/cities");
+mongoose.connect(
+  "mongodb://127.0.0.1:27017/map",
+  { useNewUrlParser: true, useFindAndModify: false }
+);
 
 /* GET home page. */
 
 router.get("/", function(req, res, next) {
-  var dataArray = [];
-  var as, na, sa, af, eu, oc;
-  setTimeout(function() {
-    mongo.connect(
-      url,
-      { useNewUrlParser: true },
-      function(err, client) {
-        var db = client.db("map");
-        assert.equal(null, err);
-        console.log("Connected to database!");
-        var outlines = db.collection("continents").find({});
-        outlines.forEach(
-          function(doc, err) {
-            assert.equal(null, err);
-            dataArray.push(doc);
-          },
-          function() {
-            client.close();
-            as = dataArray[1];
-            af = dataArray[0];
-            eu = dataArray[2];
-            na = dataArray[3];
-            sa = dataArray[4];
-            oc = dataArray[5];
-            console.log("Database disconnected!");
-            res.render("index", { title: "Express", data: dataArray });
-          }
-        );
-      }
-    );
-  }, 1000);
+  var db = mongoose.connection;
+  db.on("error", console.error.bind(console, "connection error:"));
+  db.once("open", function() {
+    // we're connected!
+  });
+  var myData;
+  cities.find({}, function(err, data) {
+    if (err) return console.log(err);
+    myData = data;
+
+    res.render("index", {
+      title: "Express",
+      as: myData[0],
+      na: myData[1],
+      sa: myData[2],
+      eu: myData[3],
+      af: myData[4],
+      oc: myData[5]
+    });
+  });
 });
 
 module.exports = router;

@@ -1,5 +1,10 @@
 <div id="newmain">
-
+  <div class="homebtn">
+    <a href="/"><button type="button" class="btn btn-danger">Home page.</button></a>
+  </div>
+  <div id="tryBtn">
+    <a href="/newMap"><button type="button" class="btn btn-danger">Use your co-ordinates on a map.</button></a>
+  </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
@@ -8,19 +13,25 @@
  crossorigin=""></script>
  <script src="/public/javascripts/leaflet-vector-markers.js"></script>
  <script>
-   var map = L.map("newmain").setView([{{lat}}, {{long}}], {{zoom}});
+  var lat = {{lat}};
+  var long = {{long}};
+  var desc = "{{desc}}";
+  var zoom = {{zoom}};
+   var map = L.map("newmain").setView([lat, long], zoom);
    var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
      subdomains: 'abcd',
      maxZoom: 18
    }).addTo(map);
-   var marker = L.marker([{{lat}}, {{long}}]).addTo(map);
+   var redMarker = L.VectorMarkers.icon({
+    icon: 'map-marker',
+    markerColor: 'red'
+  });
+
+   var marker = L.marker([lat, long], {icon: redMarker}).addTo(map);
    var popup = L.popup()
-    .setLatLng([{{lat}}, {{long}}])
-    .setContent("{{desc}}")
+    .setLatLng([lat, long])
+    .setContent(desc)
     .openOn(map);
 
-    var yourCo = [{{last}},{{long}}];
-    var markerBounds = L.latLngBounds(yourCo);
-    map.fitBounds(markerBounds);
  </script>
