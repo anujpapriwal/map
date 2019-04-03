@@ -94,7 +94,7 @@
   flex: 0 0 20%;
 }
 .input-group .input-group-text {
-  width: 20%;
+  width: auto;
 }
 
 .pre-main {
@@ -106,6 +106,16 @@
   position: absolute;
 }
 .preloader h1 {
+  background-color: black;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(40, end), blinker 0.75s step-end infinite;
+}
+
+.preloader h4 {
   background-color: black;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: 0.15em solid orange; /* The typwriter cursor */
@@ -133,5 +143,97 @@
   }
   50% {
     border-color: orange;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pre-main {
+    padding-top: 20%;
+  }
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .pre-main {
+    padding-top: 30%;
+  }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  .pre-main {
+    padding-top: 50%;
+  }
+  #legend {
+    height: auto;
+    width: 15%;
+    background-color: white;
+    position: absolute;
+    bottom: 5%;
+    right: 1%;
+    z-index: 1000;
+    border-radius: 5px;
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  #legend {
+    height: auto;
+    width: 15%;
+    background-color: white;
+    position: absolute;
+    bottom: 5%;
+    right: 1%;
+    z-index: 1000;
+    border-radius: 5px;
+  }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  .pre-main {
+    padding-top: 60%;
+  }
+  #legend {
+    height: auto;
+    width: 30%;
+    background-color: white;
+    position: absolute;
+    bottom: 5%;
+    right: 1%;
+    z-index: 1000;
+    border-radius: 5px;
+  }
+  .lcolor {
+    opacity: 0.8;
+    color: white;
+    display: inline-block;
+    margin: 0.5em 0;
+    padding-bottom: 2.5px;
+    height: 20px;
+    width: 100%;
+  }
+
+  .leaflet-control-zoom {
+    top: 12vh !important;
+  }
+
+  #user-input {
+    width: 80%;
+    height: auto;
+    margin: 15% 6.5%;
+    padding-top: 10% !important;
+    position: absolute;
+    background-color: #f2f2f2;
+    padding: 2em;
+    border-radius: 5px;
+  }
+
+  .homebtn {
+    z-index: 1000;
+    position: absolute;
+    top: 1.5%;
+    right: 1%;
   }
 }

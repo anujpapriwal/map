@@ -1,470 +1,481 @@
 <div class="pre-main">
-  <div class="preloader">
-    <h1>This map show the average life expentancy of the <br />continents over the years 1950-2015.</h1>
+  <div class="d-none d-lg-block d-xl-none">
+    <div class="preloader">
+      <h1>This map show the average life expentancy <br />of the continents over the years 1950-2015.</h1>
+    </div>
+  </div>
+  <div class="d-none d-xl-block">
+    <div class="preloader">
+      <h1>This map show the average life expentancy of the <br />continents over the years 1950-2015.</h1>
+    </div>
+  </div>
+  <div class="d-block d-sm-none">
+    <div class="preloader">
+      <h4>This map show the <br>average life expentancy <br> of the continents over <br> the years 1950-2015.</h4>
+    </div>
+  </div>
+  <div class="d-none d-md-block d-lg-none">
+    <div class="preloader">
+      <h4>This map show the average life expentancy of the <br>continents over the years 1950-2015.</h4>
+    </div>
+  </div>
+  <div class="d-none d-sm-block d-md-none">
+    <div class="preloader">
+      <h4>This map show the average life expentancy <br>of the continents over the years 1950-2015.</h4>
+    </div>
   </div>
 </div>
 <div id="mapid">
-
   <div id="legend">
-    <div id="accordion">
-      <div class="card" style="margin: 0;">
-        <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#collapseOne">
-            Legend
-          </a>
-        </div>
-        <div id="collapseOne" class="collapse show" data-parent="#accordion">
-          <div class="card-body">
-            <div class="container">
-              <span class="lcolor" style="background-color: #360000;">30-41 years</span>
-            </div>
-            <div class="container">
-              <span class="lcolor" style="background-color: #610409;">42-51 years</span>
-            </div>
-            <div class="container">
-              <span class="lcolor" style="background-color: #960001;">52-61 years</span>
-            </div>
-            <div class="container">
-              <span class="lcolor" style="background-color: #E8230C;">62-71 years</span>
-            </div>
-            <div class="container">
-              <span class="lcolor" style="background-color: #FF0000;">72-81 years</span>
-            </div>
-          </div>
-        </div>
+    <div class="card" style="margin-bottom: 0px;">
+      <div class="container">
+        <span class="lcolor" style="background-color: #360000;">30-41 years</span>
+      </div>
+      <div class="container">
+        <span class="lcolor" style="background-color: #610409;">42-51 years</span>
+      </div>
+      <div class="container">
+        <span class="lcolor" style="background-color: #960001;">52-61 years</span>
+      </div>
+      <div class="container">
+        <span class="lcolor" style="background-color: #E8230C;">62-71 years</span>
+      </div>
+      <div class="container">
+        <span class="lcolor" style="background-color: #FF0000;">72-81 years</span>
       </div>
     </div>
   </div>
 
   <div id="tryBtn">
-    <a href="/newMap"><button type="button" class="btn btn-danger">Use your co-ordinates on a map.</button></a>
+    <a href="/newMap"><button type="button" class="btn btn-danger btn-sm">Use your co-ordinates on a map.</button></a>
   </div>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+  integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
- integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
- crossorigin=""></script>
- <script src="/public/javascripts/leaflet-vector-markers.js"></script>
- <script src="/public/javascripts/leaflet-timeline-slider.min.js"></script>
- <script>
-  $(window).load(function(){
+  integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+<script src="/public/javascripts/leaflet-vector-markers.js"></script>
+<script src="/public/javascripts/leaflet-timeline-slider.min.js"></script>
+<script>
+  $(window).load(function () {
     $('.preloader').fadeOut;
     $('.pre-main').delay(5500).fadeOut('slow');
   });
 
-   var map = L.map("mapid").setView([51.505, -0.09], 2);
+  var map = L.map("mapid").setView([51.505, -0.09], 2);
 
-    var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 11
-    }).addTo(map);
+  var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 11
+  }).addTo(map);
 
-   var zeroP = {
-        stroke: false,
-        fill: true,
-        fillColor: '#360000',
-        fillOpacity: 0.8
-    }
-    var oneFourth = {
-         stroke: false,
-         fill: true,
-         fillColor: '#610409',
-         fillOpacity: 0.8
-     }
-     var half = {
-          stroke: false,
-          fill: true,
-          fillColor: '#960001',
-          fillOpacity: 0.8
-      }
+  var zeroP = {
+    stroke: false,
+    fill: true,
+    fillColor: '#360000',
+    fillOpacity: 0.8
+  }
+  var oneFourth = {
+    stroke: false,
+    fill: true,
+    fillColor: '#610409',
+    fillOpacity: 0.8
+  }
+  var half = {
+    stroke: false,
+    fill: true,
+    fillColor: '#960001',
+    fillOpacity: 0.8
+  }
 
-      var full = {
-           stroke: false,
-           fill: true,
-           fillColor: '#E8230C',
-           fillOpacity: 0.8
-       }
+  var full = {
+    stroke: false,
+    fill: true,
+    fillColor: '#E8230C',
+    fillOpacity: 0.8
+  }
 
-       var full1 = {
-            stroke: false,
-            fill: true,
-            fillColor: '#FF0000',
-            fillOpacity: 0.8
-        }
+  var full1 = {
+    stroke: false,
+    fill: true,
+    fillColor: '#FF0000',
+    fillOpacity: 0.8
+  }
 
 
-         changeColors = function( {label, value, map, exclamation} ) {
-                     switch (label) {
-                       case '1950-55':
-                           $.getJSON('../public/json/asia.geo.json', function(json){
-                             L.geoJson(json, {
-                                 clickable: false,
-                                 style: oneFourth,
-                                 onEachFeature: function(feature, layer){
-                                      layer.on('mouseover', function(){
-                                        var popup = L.popup()
-                                        .setLatLng([{{as.lat}}, {{as.long}}])
-                                        .setContent("The average life expectancy of Asia between 1950-55 was <kbd>41.4 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AS'>Tokyo</a>")
-                                        .openOn(map);
-                                      });
+  changeColors = function ({ label, value, map, exclamation }) {
+    switch (label) {
+      case '1950-55':
+        $.getJSON('../public/json/asia.geo.json', function (json) {
+          L.geoJson(json, {
+            clickable: false,
+            style: oneFourth,
+            onEachFeature: function (feature, layer) {
+              layer.on('mouseover', function () {
+                var popup = L.popup()
+                  .setLatLng([{{ as.lat }}, {{ as.long }}])
+            .setContent("The average life expectancy of Asia between 1950-55 was <kbd>41.4 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AS'>Tokyo</a>")
+            .openOn(map);
+        });
+    },
+  }).addTo(map);
+                           });
+
+  $.getJSON('../public/json/na.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ na.lat }}, {{ na.long }}])
+      .setContent("The average life expectancy of North America between 1950-55 was <kbd>68.8 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/NA'>New York</a>")
+      .openOn(map);
+  });
                                   },
                              }).addTo(map);
                            });
 
-                           $.getJSON('../public/json/na.geo.json', function(json){
-                             L.geoJson(json, {
-                                 clickable: false,
-                                 style: full,
-                                 onEachFeature: function(feature, layer){
-                                      layer.on('mouseover', function(){
-                                        var popup = L.popup()
-                                        .setLatLng([{{na.lat}}, {{na.long}}])
-                                        .setContent("The average life expectancy of North America between 1950-55 was <kbd>68.8 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/NA'>New York</a>")
-                                        .openOn(map);
-                                      });
+  $.getJSON('../public/json/sa.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: half,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ sa.lat }}, {{ sa.long }}])
+      .setContent("The average life expectancy of South America between 1950-55 was <kbd>51.4 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/SA'>Sao Paulo</a>")
+      .openOn(map);
+  });
                                   },
                              }).addTo(map);
                            });
 
-                           $.getJSON('../public/json/sa.geo.json', function(json){
-                             L.geoJson(json, {
-                                 clickable: false,
-                                 style: half,
-                                 onEachFeature: function(feature, layer){
-                                      layer.on('mouseover', function(){
-                                        var popup = L.popup()
-                                        .setLatLng([{{sa.lat}}, {{sa.long}}])
-                                        .setContent("The average life expectancy of South America between 1950-55 was <kbd>51.4 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/SA'>Sao Paulo</a>")
-                                        .openOn(map);
-                                      });
+  $.getJSON('../public/json/eu.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ eu.lat }}, {{ eu.long }}])
+      .setContent("The average life expectancy of Europe between 1950-55 was <kbd>65.6 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/EU'>London</a>")
+      .openOn(map);
+  });
                                   },
                              }).addTo(map);
                            });
 
-                           $.getJSON('../public/json/eu.geo.json', function(json){
-                             L.geoJson(json, {
-                                 clickable: false,
-                                 style: full,
-                                 onEachFeature: function(feature, layer){
-                                      layer.on('mouseover', function(){
-                                        var popup = L.popup()
-                                        .setLatLng([{{eu.lat}}, {{eu.long}}])
-                                        .setContent("The average life expectancy of Europe between 1950-55 was <kbd>65.6 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/EU'>London</a>")
-                                        .openOn(map);
-                                      });
+  $.getJSON('../public/json/africa.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: zeroP,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ af.lat }}, {{ af.long }}])
+      .setContent("The average life expectancy of Africa between 1950-55 was <kbd>37.8 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AF'>Lagos</a>")
+      .openOn(map);
+  });
                                   },
                              }).addTo(map);
                            });
 
-                           $.getJSON('../public/json/africa.geo.json', function(json){
-                             L.geoJson(json, {
-                                 clickable: false,
-                                 style: zeroP,
-                                 onEachFeature: function(feature, layer){
-                                      layer.on('mouseover', function(){
-                                        var popup = L.popup()
-                                        .setLatLng([{{af.lat}}, {{af.long}}])
-                                        .setContent("The average life expectancy of Africa between 1950-55 was <kbd>37.8 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AF'>Lagos</a>")
-                                        .openOn(map);
-                                      });
+  $.getJSON('../public/json/oc.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: half,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ oc.lat }}, {{ oc.long }}])
+      .setContent("The average life expectancy of Oceania between 1950-55 was <kbd>60.3 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/OC'>Sydney</a>")
+      .openOn(map);
+  });
                                   },
                              }).addTo(map);
                            });
-
-                           $.getJSON('../public/json/oc.geo.json', function(json){
-                             L.geoJson(json, {
-                                 clickable: false,
-                                 style: half,
-                                 onEachFeature: function(feature, layer){
-                                      layer.on('mouseover', function(){
-                                        var popup = L.popup()
-                                        .setLatLng([{{oc.lat}}, {{oc.long}}])
-                                        .setContent("The average life expectancy of Oceania between 1950-55 was <kbd>60.3 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/OC'>Sydney</a>")
-                                        .openOn(map);
-                                      });
-                                  },
-                             }).addTo(map);
-                           });
-                         break;
+  break;
 
                         case '1970-75':
-                          $.getJSON('../public/json/asia.geo.json', function(json){
-                            L.geoJson(json, {
-                                clickable: false,
-                                style: half,
-                                onEachFeature: function(feature, layer){
-                                     layer.on('mouseover', function(){
-                                       var popup = L.popup()
-                                       .setLatLng([{{as.lat}}, {{as.long}}])
-                                       .setContent("The average life expectancy of Asia between 1970-75 was <kbd>56.3 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AS'>Tokyo</a>")
-                                       .openOn(map);
-                                     });
+  $.getJSON('../public/json/asia.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: half,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ as.lat }}, {{ as.long }}])
+      .setContent("The average life expectancy of Asia between 1970-75 was <kbd>56.3 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AS'>Tokyo</a>")
+      .openOn(map);
+  });
                                  },
                             }).addTo(map);
                           });
 
-                          $.getJSON('../public/json/na.geo.json', function(json){
-                            L.geoJson(json, {
-                                clickable: false,
-                                style: full1,
-                                onEachFeature: function(feature, layer){
-                                     layer.on('mouseover', function(){
-                                       var popup = L.popup()
-                                       .setLatLng([{{na.lat}}, {{na.long}}])
-                                       .setContent("The average life expectancy of North America between 1970-75 was <kbd>71.6 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/NA'>New York</a>")
-                                       .openOn(map);
-                                     });
+  $.getJSON('../public/json/na.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full1,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ na.lat }}, {{ na.long }}])
+      .setContent("The average life expectancy of North America between 1970-75 was <kbd>71.6 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/NA'>New York</a>")
+      .openOn(map);
+  });
                                  },
                             }).addTo(map);
                           });
 
-                          $.getJSON('../public/json/sa.geo.json', function(json){
-                            L.geoJson(json, {
-                                clickable: false,
-                                style: half,
-                                onEachFeature: function(feature, layer){
-                                     layer.on('mouseover', function(){
-                                       var popup = L.popup()
-                                       .setLatLng([{{sa.lat}}, {{sa.long}}])
-                                       .setContent("The average life expectancy of South America between 1970-75 was <kbd>60.9 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/SA'>Sao Paulo</a>")
-                                       .openOn(map);
-                                     });
+  $.getJSON('../public/json/sa.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: half,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ sa.lat }}, {{ sa.long }}])
+      .setContent("The average life expectancy of South America between 1970-75 was <kbd>60.9 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/SA'>Sao Paulo</a>")
+      .openOn(map);
+  });
                                  },
                             }).addTo(map);
                           });
 
-                          $.getJSON('../public/json/eu.geo.json', function(json){
-                            L.geoJson(json, {
-                                clickable: false,
-                                style: full,
-                                onEachFeature: function(feature, layer){
-                                     layer.on('mouseover', function(){
-                                       var popup = L.popup()
-                                       .setLatLng([{{eu.lat}}, {{eu.long}}])
-                                       .setContent("The average life expectancy of Europe between 1970-75 was <kbd>71 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/EU'>London</a>")
-                                       .openOn(map);
-                                     });
+  $.getJSON('../public/json/eu.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ eu.lat }}, {{ eu.long }}])
+      .setContent("The average life expectancy of Europe between 1970-75 was <kbd>71 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/EU'>London</a>")
+      .openOn(map);
+  });
                                  },
                             }).addTo(map);
                           });
 
-                          $.getJSON('../public/json/africa.geo.json', function(json){
-                            L.geoJson(json, {
-                                clickable: false,
-                                style: oneFourth,
-                                onEachFeature: function(feature, layer){
-                                     layer.on('mouseover', function(){
-                                       var popup = L.popup()
-                                       .setLatLng([{{af.lat}}, {{af.long}}])
-                                       .setContent("The average life expectancy of Africa between 1970-75 was <kbd>46.2 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AF'>Lagos</a>")
-                                       .openOn(map);
-                                     });
+  $.getJSON('../public/json/africa.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: oneFourth,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ af.lat }}, {{ af.long }}])
+      .setContent("The average life expectancy of Africa between 1970-75 was <kbd>46.2 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AF'>Lagos</a>")
+      .openOn(map);
+  });
                                  },
                             }).addTo(map);
                           });
 
-                          $.getJSON('../public/json/oc.geo.json', function(json){
-                            L.geoJson(json, {
-                                clickable: false,
-                                style: full,
-                                onEachFeature: function(feature, layer){
-                                     layer.on('mouseover', function(){
-                                       var popup = L.popup()
-                                       .setLatLng([{{oc.lat}}, {{oc.long}}])
-                                       .setContent("The average life expectancy of Oceania between 1970-75 was <kbd>65.8 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/OC'>Sydney</a>")
-                                       .openOn(map);
-                                     });
+  $.getJSON('../public/json/oc.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ oc.lat }}, {{ oc.long }}])
+      .setContent("The average life expectancy of Oceania between 1970-75 was <kbd>65.8 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/OC'>Sydney</a>")
+      .openOn(map);
+  });
                                  },
                             }).addTo(map);
                           });
-                          break;
+  break;
 
                         case '1990-95':
-                            $.getJSON('../public/json/asia.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{as.lat}}, {{as.long}}])
-                                         .setContent("The average life expectancy of Asia between 1990-95 was <kbd>64.4 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AS'>Tokyo</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/asia.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ as.lat }}, {{ as.long }}])
+      .setContent("The average life expectancy of Asia between 1990-95 was <kbd>64.4 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AS'>Tokyo</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/na.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full1,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{na.lat}}, {{na.long}}])
-                                         .setContent("The average life expectancy of North America between 1990-95 was <kbd>75.2 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/NA'>New York</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/na.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full1,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ na.lat }}, {{ na.long }}])
+      .setContent("The average life expectancy of North America between 1990-95 was <kbd>75.2 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/NA'>New York</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/sa.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{sa.lat}}, {{sa.long}}])
-                                         .setContent("The average life expectancy of South America between 1990-95 was <kbd>68 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/SA'>Sao Paulo</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/sa.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ sa.lat }}, {{ sa.long }}])
+      .setContent("The average life expectancy of South America between 1990-95 was <kbd>68 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/SA'>Sao Paulo</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/eu.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full1,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{eu.lat}}, {{eu.long}}])
-                                         .setContent("The average life expectancy of Europe between 1990-95 was <kbd>72.6 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/EU'>London</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/eu.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full1,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ eu.lat }}, {{ eu.long }}])
+      .setContent("The average life expectancy of Europe between 1990-95 was <kbd>72.6 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/EU'>London</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/africa.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: half,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{af.lat}}, {{af.long}}])
-                                         .setContent("The average life expectancy of Africa between 1990-95 was <kbd>51.1 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AF'>Lagos</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/africa.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: half,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ af.lat }}, {{ af.long }}])
+      .setContent("The average life expectancy of Africa between 1990-95 was <kbd>51.1 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AF'>Lagos</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/oc.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full1,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{oc.lat}}, {{oc.long}}])
-                                         .setContent("The average life expectancy of Oceania between 1990-95 was <kbd>71.9 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/OC'>Sydney</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/oc.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full1,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ oc.lat }}, {{ oc.long }}])
+      .setContent("The average life expectancy of Oceania between 1990-95 was <kbd>71.9 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/OC'>Sydney</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
-                          break;
+  break;
 
                           case '2010-15':
-                            $.getJSON('../public/json/asia.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{as.lat}}, {{as.long}}])
-                                         .setContent("The average life expectancy of Asia between 2010-15 was <kbd>69.4 year.</kbd><br />Look at the most populous city of this continent: <a href='/map/AS'>Tokyo</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/asia.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ as.lat }}, {{ as.long }}])
+      .setContent("The average life expectancy of Asia between 2010-15 was <kbd>69.4 year.</kbd><br />Look at the most populous city of this continent: <a href='/map/AS'>Tokyo</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/na.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full1,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{na.lat}}, {{na.long}}])
-                                         .setContent("The average life expectancy of North America between 2010-15 was <kbd>78.5 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/NA'>New York</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/na.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full1,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ na.lat }}, {{ na.long }}])
+      .setContent("The average life expectancy of North America between 2010-15 was <kbd>78.5 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/NA'>New York</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/sa.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full1,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{sa.lat}}, {{sa.long}}])
-                                         .setContent("The average life expectancy of South America between 2010-15 was <kbd>72.6 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/SA'>Sao Paulo</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/sa.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full1,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ sa.lat }}, {{ sa.long }}])
+      .setContent("The average life expectancy of South America between 2010-15 was <kbd>72.6 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/SA'>Sao Paulo</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/eu.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full1,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{eu.lat}}, {{eu.long}}])
-                                         .setContent("The average life expectancy of Europe between 2010-15 was <kbd>75.7 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/EU'>London</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/eu.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full1,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ eu.lat }}, {{ eu.long }}])
+      .setContent("The average life expectancy of Europe between 2010-15 was <kbd>75.7 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/EU'>London</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/africa.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: half,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{af.lat}}, {{af.long}}])
-                                         .setContent("The average life expectancy of Africa between 2010-15 was <kbd>51 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AF'>Lagos</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/africa.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: half,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ af.lat }}, {{ af.long }}])
+      .setContent("The average life expectancy of Africa between 2010-15 was <kbd>51 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/AF'>Lagos</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
 
-                            $.getJSON('../public/json/oc.geo.json', function(json){
-                              L.geoJson(json, {
-                                  clickable: false,
-                                  style: full1,
-                                  onEachFeature: function(feature, layer){
-                                       layer.on('mouseover', function(){
-                                         var popup = L.popup()
-                                         .setLatLng([{{oc.lat}}, {{oc.long}}])
-                                         .setContent("The average life expectancy of Oceania between 2010-15 was <kbd>75.9 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/OC'>Sydney</a>")
-                                         .openOn(map);
-                                       });
+  $.getJSON('../public/json/oc.geo.json', function (json) {
+    L.geoJson(json, {
+      clickable: false,
+      style: full1,
+      onEachFeature: function (feature, layer) {
+        layer.on('mouseover', function () {
+          var popup = L.popup()
+            .setLatLng([{{ oc.lat }}, {{ oc.long }}])
+      .setContent("The average life expectancy of Oceania between 2010-15 was <kbd>75.9 years.</kbd><br />Look at the most populous city of this continent: <a href='/map/OC'>Sydney</a>")
+      .openOn(map);
+  });
                                    },
                               }).addTo(map);
                             });
-                            break;
+  break;
 
                        default:
 
@@ -472,18 +483,18 @@
                    };
 
 
-      L.control.timelineSlider({
-                position: 'topright',
-                backgroundOpacity: '1',
-                topBgPadding: '20px',
-                bottomBgPadding: '5px',
-                leftBgPadding: '35px',
-                activeColor: '#FF1D23',
-                changeMap: changeColors,
-                timelineItems: ["1950-55", "1970-75", "1990-95", "2010-15"]
-              })
-            .addTo(map);
+  L.control.timelineSlider({
+    position: 'topright',
+    backgroundOpacity: '1',
+    topBgPadding: '20px',
+    bottomBgPadding: '5px',
+    leftBgPadding: '35px',
+    activeColor: '#FF1D23',
+    changeMap: changeColors,
+    timelineItems: ["1950-55", "1970-75", "1990-95", "2010-15"]
+  })
+    .addTo(map);
 
 
 
- </script>
+</script>

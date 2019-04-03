@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 // Build the connection string
-var dbURI = "mongodb://localhost:27018/map";
+var dbURI = "mongodb://localhost:27017/map";
 
 // Create the database connection
 mongoose.connect(
