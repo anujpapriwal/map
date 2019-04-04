@@ -1,6 +1,6 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var cities = new Schema({
@@ -40,4 +40,4 @@ var cities = new Schema({
   ]
 });
 
-module.exports = mongoose.model("cities", cities);
+module.exports = mongoose.model('cities', cities);
