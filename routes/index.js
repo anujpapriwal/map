@@ -3,10 +3,10 @@ var router = express.Router();
 var mongoose = require("mongoose");
 var assert = require("assert");
 var cities = require("../model/cities");
-mongoose.connect(
+/* mongoose.connect(
   "mongodb://127.0.0.1:27017/map",
   { useNewUrlParser: true, useFindAndModify: false }
-);
+); */
 
 /* GET home page. */
 

@@ -1,7 +1,8 @@
 var mongoose = require('mongoose')
 
 // Build the connection string
-var dbURI = 'connection-string'
+var dbURI = process.env.MONGO_URI;
+console.log('dbURI: ' + dbURI);
 
 // Create the database connection
 mongoose.connect(
@@ -36,5 +37,5 @@ process.on('SIGINT', function () {
 })
 
 // BRING IN YOUR SCHEMAS & MODELS // For example
-require('./../model/cities')
-require('./../model/mapSchema')
+require('./../model/cities');
+require('./../model/mapSchema');

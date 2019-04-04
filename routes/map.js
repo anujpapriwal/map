@@ -39,7 +39,10 @@ router.get("/", function(req, res, next) {
   res.redirect("/newMap");
 });
 
-module.exports = router;
+/**
+ * No need to export the router object twice. This could cause confusion
+ */
+// module.exports = router;
 
 router.get("/:continent", function(req, res, next) {
   var input = req.params.continent;
