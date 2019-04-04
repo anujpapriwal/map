@@ -2,8 +2,16 @@
   "name": "map",
   "version": "0.0.0",
   "private": true,
+  "husky": {
+    "scripts": {
+      "pre-commit": "npm run lint && npm run format"
+    }
+  },
   "scripts": {
-    "start": "node ./bin/www"
+    "format": "prettier --write \"**/*.js\"",
+    "start": "node ./bin/www",
+    "start:dev": "nodemon ./bin/www",
+    "lint": "eslint -c .eslintrc.js **/*.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -20,6 +28,7 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0",
     "husky": "^1.3.1",
     "nodemon": "^1.18.10",
     "prettier": "^1.16.4"

@@ -1,13 +1,13 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 var schema = mongoose.Schema;
-var mapSchema = require("../model/nMap");
-var cities = require("../model/cities");
+var mapSchema = require('../model/nMap');
+var cities = require('../model/cities');
 
 /* GET home page. */
 
-router.post("/", function(req, res, next) {
+router.post('/', function(req, res, next) {
   var userInputs = {
     name: req.body.name,
     email: req.body.email,
@@ -26,8 +26,8 @@ router.post("/", function(req, res, next) {
     }
   );
 
-  res.render("map", {
-    title: "Express",
+  res.render('map', {
+    title: 'Express',
     lat: req.body.lat,
     long: req.body.long,
     desc: req.body.desc,
@@ -35,8 +35,8 @@ router.post("/", function(req, res, next) {
   });
 });
 
-router.get("/", function(req, res, next) {
-  res.redirect("/newMap");
+router.get('/', function(req, res, next) {
+  res.redirect('/newMap');
 });
 
 /**
@@ -44,15 +44,15 @@ router.get("/", function(req, res, next) {
  */
 // module.exports = router;
 
-router.get("/:continent", function(req, res, next) {
+router.get('/:continent', function(req, res, next) {
   var input = req.params.continent;
   cities.findOne({ continent: input }, function(err, city) {
     if (err) return console.log(err);
     if (!city) {
-      res.redirect("/newMap");
+      res.redirect('/newMap');
     } else {
-      res.render("map", {
-        title: "Express",
+      res.render('map', {
+        title: 'Express',
         lat: city.lat,
         long: city.long,
         zoom: 12,

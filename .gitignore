@@ -1,1 +1,5 @@
+# no need to add node_modules, jsut adds bloat. Heroku and others can install on their own (in fact, Heroku does)
 node_modules
+.vscode
+# uncomment the next line after you get an idea of what you are doing with the .env file
+#.env
