@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 // Build the connection string
-var dbURI = 'mongodb+srv://anuj:9425313546@anuj-map-jvnig.mongodb.net/test?retryWrites=true'
+var dbURI = 'connection-string'
 
 // Create the database connection
 mongoose.connect(
